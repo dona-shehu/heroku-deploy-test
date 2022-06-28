@@ -26,18 +26,30 @@ const pool = new Pool({
 // export DATABASE_URL=postgres://<USERNAME>:<PASSWORD>@<HOST>:<PORT>/<DB>
 // npm run start or npm run dev
 
-//In my case 
-//export PORT = 7777 npm run start
+//Connection with the DB locally In my case 
+//export PORT=7777 
 //export DATABASE_URL=postgres://codeyourfuture:donashehu@localhost:5432/cyf_hotels?sslmode=disable
 //npm run dev
+
+//Create a new heroku DB at Dashboard
+//Select “Deploy” > “Deployment Method” > 
+//Select “Settings” > “Build Packs” > Select “NodeJS”
+//Select “Resources” > “Add-ons” > “Heroku Postgres”
+//Click on the Heroku Postgres link
+//“Settings” > “Database Credentials”
 
 ///Heroku BD Credentials
 //postgres://teiiyhdhwetorm:5066250e6a4314a99f04471cd63608607b167006347d51f7e60c13fab95c9267@ec2-176-34-215-248.eu-west-1.compute.amazonaws.com:5432/dc089k9v9gcam
 
-// psql -h <HOST> -p <PORT> -U <USERNAME> -W <DB>
+
+//In terminal run this comand with Heroku DB credentials 
+//psql -h <HOST> -p <PORT> -U <USERNAME> -W <DB
+//psql  -h ec2-176-34-215-248.eu-west-1.compute.amazonaws.com:5432 -p 5066250e6a4314a99f04471cd63608607b167006347d51f7e60c13fab95c9267 -U teiiyhdhwetorm -W dc089k9v9gcam
+//provide password when prompted
 
 
-// provide password when prompted
+
+
 // Locl DB credentials 
 //  const pool = new Pool({
 //     user: 'codeyourfuture',
@@ -46,6 +58,8 @@ const pool = new Pool({
 //     password: 'donashehu',
 //     port: 5432
 // });
+
+
 
 app.get("/hotels", function (req, res) {
     pool.query('SELECT * FROM hotels')
